@@ -34,6 +34,13 @@ final class ViewController: UIViewController {
     // Конструктор String(format:)
     lazy var book = String(format: "Автор книги %@ - %@. Книга написана на %i страниц, размеры %i/%i. %@", bookName, bookAuthor, bookNumberOfPages, bookWidth, bookHeight, iReadItBook ? "Я прочитал эту книгу, всем советую." : "Я еще не читал эту книгу, но скоро сделаю это.")
     
+    // арифметические операции
+    let moreLess = (2 + 10) > (15 - 10)
+    let equal = (10 * 2) == (40 / 2)
+    
+    // тернарный оператор
+    lazy var ternary = equal ? "equal" : "not equal"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
