@@ -65,9 +65,24 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        printResults()
+        
+        let checkResult = checkAge(19, name: "Андрей")
+        print(checkResult)
+    }
+    
+    func printResults() {
         print(me)
         print(book)
         
         age = 29
+    }
+    
+    func checkAge(_ age: Int, name: String) -> String {
+        if age > 18 {
+            return "Доступ разрешен для \(name)"
+        } else {
+            return "Доступ запрещен для \(name)"
+        }
     }
 }
