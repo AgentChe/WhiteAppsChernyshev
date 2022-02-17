@@ -11,7 +11,14 @@ final class ViewController: UIViewController {
     // Здесь я описываю себя
     let firstName = "Андрей"
     let lastName = "Чернышев"
-    var age = 29
+    var age = 29 {
+        willSet {
+            print("будет исполнено \(newValue) лет")
+        }
+        didSet {
+            print("исполнено \(oldValue) лет")
+        }
+    }
     let iAmMan = true
     var myHeight: Int = 182
     var myWeight: Float = 81.3
@@ -41,10 +48,26 @@ final class ViewController: UIViewController {
     // тернарный оператор
     lazy var ternary = equal ? "equal" : "not equal"
     
+    // вычисляемые свойства
+    var myAge: Int {
+        set {
+            age = newValue
+        }
+        get {
+            age
+        }
+    }
+    
+    var myFullName: String {
+        String(format: "%@ %@", firstName, lastName)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(me)
         print(book)
+        
+        age = 29
     }
 }
