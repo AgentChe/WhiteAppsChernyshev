@@ -66,16 +66,25 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         printResults()
-        
-        let checkResult = checkAge(19, name: "Андрей")
-        print(checkResult)
     }
     
     func printResults() {
         print(me)
         print(book)
-        
+
+        sum(value1: 1, value2: 2) { result in
+            print(result)
+        }
+
+        let resultOperation = operation(with: "Андрей", value2: "Чернышев") { firstName, lastName -> String in
+            return String(format: "Привет, %@ %@", firstName, lastName)
+        }
+        print(resultOperation)
+
         age = 29
+        
+        let checkResult = checkAge(19, name: "Андрей")
+        print(checkResult)
     }
     
     func checkAge(_ age: Int, name: String) -> String {
@@ -84,5 +93,14 @@ final class ViewController: UIViewController {
         } else {
             return "Доступ запрещен для \(name)"
         }
+    }
+    
+    func sum(value1: Double, value2: Float, completion: (Double) -> Void) {
+        let result = value1 + Double(value2)
+        completion(result)
+    }
+    
+    func operation(with value1: String, value2: String, operation: (String, String) -> String) -> String {
+        return operation(value1, value2)
     }
 }
